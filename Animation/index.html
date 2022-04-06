@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <canvas id="canvas">
+      <style>
+          #burger-text, #fry-text{
+              font-size: 20px;
+              text-align: center;
+                position: absolute;
+                border-radius: 40%;
+                transform: translate(30%, -1400%);
+                background-color: white;
+                width: 150px;
+          }
+          #canvas{
+            background-image: url("./images/mcdonald.jpeg");
+            background-size: cover;
+          }
+          #fry-text{
+                transform: translate(230%, -1400%);
+            }
+      </style>
+      <script>
+        var canvasWidth = 500;
+        var canvasHeight = 350;
+        var spriteWidth = 2500;
+        var spriteHeight = 4290;
+        var rows = 13;
+        var cols = 5;
+        var trackRight = 0;
+        var trackLeft = 1;
+        var width = spriteWidth / cols;
+        var height = spriteHeight / rows;
+        var curFrame = 0;
+        var frameCount = 5;
+        var x = 0;
+        var y = 0;
+        var srcX = 0;
+        var srcY = 0;
+        var left = false;
+        var right = true;
+        var speed = 8;
+        var canvas = document.getElementById("canvas");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        var ctx = canvas.getContext("2d");
+        var character = new Image();
+        character.src = "images/ezgif.com-gif-maker-2.png";
+
+        var rowCount = 0;
+        function updateFrame() {
+          curFrame = ++curFrame % cols;
+          srcX = curFrame * width;
+          srcY = rowCount * height;
+
+          ctx.clearRect(x, y, width, height);
+        }
+
+        function draw() {
+          updateFrame();
+          if(rowCount < 11){
+            rowCount++;
+          }else{
+            rowCount = 0;
+          }
+          ctx.drawImage( character,srcX,srcY,width,height, x,y,width,height);
+        }
+        setInterval(draw, 100);
+      </script>
+    </canvas> 
+  </head>
+  <body>
+   <p id="burger-text">
+       Let's jump!
+</p>
+<p id="fry-text">
+    Jumping is Fun!
+</p>
+  </body>
+</html>

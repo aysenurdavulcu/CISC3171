@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<body>
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = ["Apple", "Orange", "Banana", "Kiwi", "Blueberry", "Grapes"];
+var yValues = [20, 10, 15, 3, 5, 8];
+var barColors = ["red", "orange","yellow","blue","green", "purple"];
+  
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Fruits"
+    }
+  }
+});
+</script>
+
+</body>
+</html>
