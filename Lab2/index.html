@@ -2,22 +2,12 @@
   <head>
     <canvas id="canvas">
       <style>
-          #burger-text, #fry-text{
-              font-size: 20px;
-              text-align: center;
-                position: absolute;
-                border-radius: 40%;
-                transform: translate(30%, -1400%);
-                background-color: white;
-                width: 150px;
-          }
+        
           #canvas{
-            background-image: url("./images/mcdonald.jpeg");
+            background-color: pink;
             background-size: cover;
           }
-          #fry-text{
-                transform: translate(230%, -1400%);
-            }
+         
       </style>
       <script>
         var canvasWidth = 500;
@@ -53,9 +43,13 @@
           srcY = 0 * height;
 
           ctx.clearRect(x, y, width, height);
+          if(left && x>0){
+            srcY = trackLeft * height; 
+            x-=speed; 
+            }
         }
 
-        function draw() {
+        function myFunction() {
           updateFrame();
           if(rowCount < 2){
             rowCount++;
@@ -64,11 +58,17 @@
           }
           ctx.drawImage( character,srcX,srcY,width,height, x,y,width,height);
         }
+        function moveLeft(){
+            left = true; 
+            right = false; 
+        }
         setInterval(draw, 500);
+
       </script>
     </canvas> 
   </head>
   <body>
+    <button id="demo" onclick="myFunction()">Click me to go to the next number.</button>
 
   </body>
 </html>
