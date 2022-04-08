@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+         <form id = "form">
+            <h1>Journal</h1>
+            <input type="text" id="fname" name="fname" maxlength = "40" oninput="save()"><br><br>
+       
+    <textarea id="myTextarea" rows="10" cols="80"></textarea>
+    <p></p>
+</form>
+    <button onclick="mySave()">Save before leaving!</button>
+    <button onclick="myLoad()">Restore</button>
+    <input type="button" onclick="myFunction()" value="Clear">
+ 
+    <script>
+        function myFunction() {
+  document.getElementById("form").reset();
+}
+      function mySave() {
+        var myContent = document.getElementById("myTextarea").value;
+        localStorage.setItem("myContent", myContent);
+      }
+      function myLoad() {
+        var myContent = localStorage.getItem("myContent");
+        document.getElementById("myTextarea").value = myContent;
+   
+    }
+    </script>
+  </body>
+</html>
