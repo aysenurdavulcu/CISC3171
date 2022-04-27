@@ -16,13 +16,13 @@
   Your browser does not support the audio element.
 </audio>
 
-<audio id ="fireworksound">
-    <source src="./music/fireworks.mp3" type="audio/mpeg">
+<audio id ="laughsound">
+    <source src="./music/funny laugh sound effects.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
-<audio id ="trucksound">
-    <source src="./music/trucktraffic.mp3" type="audio/mpeg">
+<audio id ="rainforestsound">
+    <source src="./music/Relax 1 Minute - Rainforest Sounds, Waterfall and Rain.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
@@ -37,19 +37,19 @@
 <button onclick="playgiveupsound()" type="button">play Never Gonne give you up song</button>
 <button onclick="pausegiveupsound()" type="button">pause Never gonna give you up song</button> 
 
-<button onclick="playfireworks()" type="button">Play firwowkrs sound</button>
-<button onclick="pausefireworks()" type="button">Pause Firworks sound</button>
+<button onclick="playlaughsound()" type="button">Play laughing sound</button>
+<button onclick="pauselaughsound()" type="button">Pause lauging sound</button>
 
-<button onclick="playtrucktraffic()" type="button">Play Truck Traffic sound</button>
-<button onclick="pausetrucktraffic()" type="button">Pause Truck Traffic sound</button> 
+<button onclick="playrainforestsound()" type="button">Play Rain Forest sound</button>
+<button onclick="pauserainforestsound()" type="button">Pause Rain Forest sound</button> 
 
 <script>
 
 var x = document.getElementById("myAudio"); 
 var bird = document.getElementById("birdsound"); 
 var giveup = document.getElementById("giveupsound"); 
-var fireworks = document.getElementById("fireworks"); 
-var truck = document.getElementById("trucksound"); 
+var laugh = document.getElementById("laughsound"); 
+var rainforest = document.getElementById("rainforestsound"); 
 
 function playAudio() { 
   x.play(); 
@@ -74,20 +74,20 @@ function pausegiveupsound() {
   giveup.pause(); 
 } 
 
-function playfireworks() { 
-  fireworks.play(); 
+function playlaughsound() { 
+  laugh.play(); 
 } 
 
-function pausefireworks() { 
-  fireworks.pause(); 
+function pauselaughsound() { 
+  laugh.pause(); 
 } 
 
-function playtrucktraffic() { 
-  truck.play(); 
+function playrainforestsound() { 
+  rainforest.play(); 
 } 
 
-function pausetrucktraffic() { 
-  truck.pause(); 
+function pauserainforestsound() { 
+  rainforest.pause(); 
 } 
 </script>
 
