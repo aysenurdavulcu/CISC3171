@@ -1,6 +1,20 @@
 {
-  "dependencies": {
-    "phaser": "^3.55.2",
-    "react-router-dom": "^6.3.0"
-  }
+  "name": "cisc3610",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aysenurdavulcu/CISC3610.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aysenurdavulcu/CISC3610/issues"
+  },
+  "homepage": "https://github.com/aysenurdavulcu/CISC3610#readme"
 }
