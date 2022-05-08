@@ -1,7 +1,7 @@
 # CISC3171
 ## NAME: Aysenur Davulcu
 ## EMAIL: Aysenurdavulcu56@gmail.com
-To run:
+##To run:
     ###Step 1: npm install 
     ###Step 2:  npm install -g http-server
        ####NOTE: If you are missing write access -> run command "sudo chown -R $USER /usr/local/lib/node_modules" and try again
