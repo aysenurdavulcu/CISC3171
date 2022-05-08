@@ -1,41 +1,80 @@
-var recognition = new webkitSpeechRecognition();
-// recognition.onresult = function(event) { 
-//   console.log(event) 
-// }
-//recognition.start();
+"use strict";
+const Speech = {
+  canvas: undefined,
+  ctx: undefined,
 
-//var grammar = '#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;'
+  text: {
+    x: 400,
+    y: 50,
+    size: 20,
+    color: "blue",
+    offset: 30,
+    words: ["apple", "banana", "grape", "lemon", "orange"],
+    about: "Aysenur Davulcu 2022" ,
+    help:
+    "Say a name of the object on the screen. Say 'About', to hear about the program.",
+    default: "Say a name of a fruit on the screen..",
+  },
+};
+const start = () => {
+  Speech.canvas = document.getElementById("canvas");
+  Speech.ctx = Speech.canvas.getContext("2d");
+  execute();
+};
 
-function handleSpeak(){
-    console.log("begin speach")
-    recognition.start();
-}
+document.addEventListener("DOMContentLoaded", start);
+const execute = () => {
+  updateButton();
+  drawText(Speech.text);
+};
+const updateButton = () => {
+  const button = document.getElementById("speak");
+  button.onclick = () => {
+    if (button.innerText === "Speak") {
+      button.innerText = "Stop";
+      recognition.start();
+    } else {
+      button.innerText = "Speak";
+      recognition.abort();
+    }
+  };
+};
+const drawText = (text) => {
+  Speech.ctx.clearRect(0, 0, canvas.width, canvas.height);
+  Speech.ctx.font = `${text.size}px ${text.font}`;
+  Speech.ctx.fillStyle = text.color;
+  for (let i = 0; i < text.words.length; i++) {
+    Speech.ctx.fillText(text.words[i], text.x, text.y + text.offset * i);
+  }
+};
+const drawSubject = (subject) => {
+  Speech.ctx.clearRect(0, 0, canvas.width, canvas.height);
+  Speech.ctx.fillText(subject, Speech.text.x, Speech.text.y + 200);
+};
 
-function handleSpeakEnd(){
-    console.log("end speach")
-    recognition.start();
-}
-// var grammar = '#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;'
-// var recognition = new webkitSpeechRecognition()znew SpeechRecognition();
-// var speechRecognitionList = new SpeechGrammarList();
-// speechRecognitionList.addFromString(grammar, 1);
-// recognition.grammars = speechRecognitionList;
+const recognition = new webkitSpeechRecognition();
+recognition.continuous = false;
+recognition.onspeechend = () => {
+  recognition.stop();
+  const button = document.getElementById("speak");
+  button.innerText = "Speak";
+};
+recognition.onresult = (event) => {
+  const result = String(event.results[0][0].transcript);
 
-// var diagnostic = document.querySelector('.output');
-// var bg = document.querySelector('html');
-
-// document.body.onclick = function() {
-//   recognition.start();
-//   console.log('Ready to receive a color command.');
-// }
-
-// abortBtn.onclick = function() {
-//   recognition.abort();
-//   console.log('Speech recognition aborted.');
-// }
-
-// recognition.onspeechend = function() {
-//   recognition.stop();
-//   console.log('Speech recognition has stopped.');
-// }
-
+  if (result === "help") {
+    speak(Speech.text.help);
+  } else if (result === "about") {
+    speak(Speech.text.about);
+  } else if (Speech.text.words.indexOf(result.toLowerCase()) !== -1) {
+    speak(result);
+    drawSubject(result);
+  } else {
+    speak(Speech.text.default);
+    drawText(Speech.text);
+  }
+};
+const speak = (text) => {
+  const utterance = new SpeechSynthesisUtterance(text);
+  window.speechSynthesis.speak(utterance);
+};
