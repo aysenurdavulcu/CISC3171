@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src = "VoiceRecognition.js"></script>
+        <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+        <div class="myCanvas">
+            <div class="instructions">
+                <h1>Instructions</h1>
+                <p>
+                    Say a name of the object to see the object on the screen.
+                </br></br>Say "Help" to tell them "Say a name of the object on the screen. Say 'About', to hear about the program." This will use Text to Speech to play back the help instructions.
+                </br></br>Say "About" to hear your name and Copyright with this year. This will use Text to Speech to play back the help instructions.
+                </p>
+                
+            </div>
+            <div class="buttons">
+                <button onclick="handleSpeak()">SPEAK</button> 
+                <button onclick="handleSpeakEnd()">STOP</button> 
+            </div>
+            
+        </div>
+    </body>
+
+</html>
